@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Climbing shoes</title>
+</head>
+<body>
+Here are some climbing shoes:
+<ol>
+    <li th:each="shoe : ${shoes}" th:text="${shoe}">My Junk shoe</li>
+</ol>
+</body>
+</html>
