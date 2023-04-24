@@ -1,12 +1,20 @@
 package kubala.jakub.ClimbingShoesSizeGuideweb.biz.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
+@Data                           //lombok annotation that creates for us default constructor, getters and setter, toString(), equals(), etc.
+@AllArgsConstructor             //annotation that creates all args constructor
+@NoArgsConstructor              //@AllArgsConstructor overridden my NoArgConstructor from @Data, so I need to add a new one
+@Entity                         //for spring to know to use this class as the entity, the same as PersonRepository as @Repository
 public class Shoe {
 
+    @Id                        //flag id
+    @GeneratedValue            //telling spring to create id in the database for me, since shoes don't have their ids
     private Long id;
     private String rockShoeModel;
     private String technicalFit;        //Hard Bouldering, Hard Sport Climbing and Elite Trad Climbing.
