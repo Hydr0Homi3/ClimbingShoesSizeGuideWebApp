@@ -7,6 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Shoe {
 
+    private Long id;
     private String rockShoeModel;
     private String technicalFit;        //Hard Bouldering, Hard Sport Climbing and Elite Trad Climbing.
     private String semiTechnicalFit;    //Hard Trad Climbing, Mid Grade Bouldering and Sport Climbing.

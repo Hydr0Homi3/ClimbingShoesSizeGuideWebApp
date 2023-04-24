@@ -12,6 +12,7 @@
     <table class="table">
         <thead>
         <tr>
+            <th scope="col">ID</th>
             <th scope="col">Rock Shoe Model</th>
             <th scope="col">Technical Fit</th>
             <th scope="col">Semi-Technical Fit</th>
@@ -23,24 +24,14 @@
         </thead>
         <tbody>
         <tr th:each="shoe : ${shoes}">
-            <th scope="row" th:text="${shoe.rockShoeModel}">1</th>
+            <th scope="row" th:text="${shoe.id}">1</th>
+            <td th:text="${shoe.rockShoeModel}">Mark</td>
             <td th:text="${shoe.technicalFit}">Mark</td>
             <td th:text="${shoe.semiTechnicalFit}">Otto</td>
             <td th:text="${shoe.traditionalFit}">@mdo</td>
             <td th:text="${shoe.entryLevelFit}">@mdo</td>
             <td th:text="${shoe.footVolume}">@mdo</td>
             <td th:text="${shoe.footType}">@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
         </tr>
         </tbody>
     </table>
