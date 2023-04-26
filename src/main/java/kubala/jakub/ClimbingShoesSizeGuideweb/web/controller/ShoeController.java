@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller                     //marking as a Controller (similar to @Component and @Repository), telling Spring this is a class I want you to register and manage. @Controller has to do with Web stuff
@@ -24,8 +25,19 @@ public class ShoeController {
         return shoeRepository.findAll();        //find all the records in the shoes table. whatever comes out of here is stored in the model with key "shoes"
     }
 
+    @ModelAttribute                     //don't need to name this model, Spring will take the return data type of Shoe and use that name as the name for the model
+    public Shoe getShoe() {             //using NoArgDefaultConstructor, blank Shoe to use as a model for user input
+        return new Shoe();
+    }
+
     @GetMapping         //@GetMapping relates to HTTP operations: GET, POST, PUT, DELETE. if the request comes with /shoes resource, and that request is GET request, let this method handle that request
     public String showShoesPage() {  //go to shoes.html template and use whatever data was used in the model to fill in data used in a template
         return "shoes";     //it should respond by showing the view called "shoes", which relates to the template shoes.html
+    }
+
+    @PostMapping        //handles any request trying to submit data into the backend (POST)
+    public String saveShoe(Shoe shoe) {     //passing shoe object from our form and getShoe() method
+        shoeRepository.save(shoe);          //saving new shoe in a db
+        return "redirect:shoes";             //redirect: shows refreshed version of shoes after adding new instance to the db
     }
 }

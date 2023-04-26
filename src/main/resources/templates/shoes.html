@@ -36,7 +36,7 @@
         </tbody>
     </table>
 
-    <form th:object="${shoe}">
+    <form th:object="${shoe}" method="post">
         <div class="mb-3">
             <label for="rockShoeModel" class="form-label">Rock Shoe Model</label>
             <input type="text" class="form-control" id="rockShoeModel" th:field="*{rockShoeModel}" aria-describedby="rockShoeModelHelp">
