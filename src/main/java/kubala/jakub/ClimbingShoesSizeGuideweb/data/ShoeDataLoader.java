@@ -10,7 +10,7 @@ import java.util.List;
 //class to load shoe data to the database
 //implements ApplicationRunner interface from spring data framework - called whenever application starts up
 
-@Component
+//@Component        //commenting out @Component to get rid of hardcoded dummy data
 public class ShoeDataLoader implements ApplicationRunner {
 
     private ShoeRepository shoeRepository;
