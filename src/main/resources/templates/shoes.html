@@ -9,7 +9,7 @@
 <body>
 
 <div class="col-8 mx-auto">
-    <table class="table">
+    <table class="table table table-bordered table-sm">
         <thead>
         <tr>
             <th scope="col">ID</th>
@@ -23,6 +23,9 @@
         </tr>
         </thead>
         <tbody>
+        <tr th:if="${#lists.isEmpty(shoes)}">
+            <td colspan="8" class="text-center">No Data</td>
+        </tr>
         <tr th:each="shoe : ${shoes}">
             <th scope="row" th:text="${shoe.id}">1</th>
             <td th:text="${shoe.rockShoeModel}">Mark</td>
