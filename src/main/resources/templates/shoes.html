@@ -44,38 +44,59 @@
     <form th:object="${shoe}" method="post">
         <div class="mb-3">
             <label for="rockShoeModel" class="form-label">Rock Shoe Model</label>
-            <input type="text" class="form-control" id="rockShoeModel" th:field="*{rockShoeModel}" aria-describedby="rockShoeModelHelp">
+            <input type="text" class="form-control" id="rockShoeModel" th:field="*{rockShoeModel}" th:errorclass="is-invalid" aria-describedby="rockShoeModelHelp">
             <div id="rockShoeModelHelp" class="form-text">e.g. Scarpa Instinct VS</div>
+            <div id="validationRockShoeModel" class="invalid-feedback" th:errors="*{rockShoeModel}">
+                Please choose a username.
+            </div>
         </div>
         <div class="mb-3">
             <label for="technicalFit" class="form-label">Technical Fit</label>
-            <input type="text" class="form-control" id="technicalFit" th:field="*{technicalFit}" aria-describedby="technicalFitHelp">
+            <input type="text" class="form-control" id="technicalFit" th:field="*{technicalFit}" th:errorclass="is-invalid" aria-describedby="technicalFitHelp">
             <div id="technicalFitHelp" class="form-text">e.g. Drop 1.5 EU Sizes / Buy 0.5 UK Size Larger</div>
+            <div id="validationTechnicalFit" class="invalid-feedback" th:errors="*{technicalFit}">
+                Please choose a username.
+            </div>
         </div>
         <div class="mb-3">
             <label for="semiTechnicalFit" class="form-label">Semi-Technical Fit</label>
-            <input type="text" class="form-control" id="semiTechnicalFit" th:field="*{semiTechnicalFit}" aria-describedby="semiTechnicalFitHelp">
+            <input type="text" class="form-control" id="semiTechnicalFit" th:field="*{semiTechnicalFit}" th:errorclass="is-invalid" aria-describedby="semiTechnicalFitHelp">
             <div id="semiTechnicalFitHelp" class="form-text">e.g. Drop 1 EU Size / Buy Shoe Size</div>
+            <div id="validationSemiTechnicalFit" class="invalid-feedback" th:errors="*{semiTechnicalFit}">
+                Please choose a username.
+            </div>
         </div>
         <div class="mb-3">
             <label for="traditionalFit" class="form-label">Traditional Fit</label>
-            <input type="text" class="form-control" id="traditionalFit" th:field="*{traditionalFit}" aria-describedby="traditionalFitHelp">
+            <input type="text" class="form-control" id="traditionalFit" th:field="*{traditionalFit}" th:errorclass="is-invalid" aria-describedby="traditionalFitHelp">
             <div id="traditionalFitHelp" class="form-text">e.g. Drop 0.5 EU Size / Buy 0.5 UK Size Larger</div>
+            <div id="validationTraditionalFit" class="invalid-feedback" th:errors="*{traditionalFit}">
+                Please choose a username.
+            </div>
         </div>
         <div class="mb-3">
             <label for="entryLevelFit" class="form-label">Entry Level Fit</label>
-            <input type="text" class="form-control" id="entryLevelFit" th:field="*{entryLevelFit}" aria-describedby="entryLevelFitHelp">
+            <input type="text" class="form-control" id="entryLevelFit" th:field="*{entryLevelFit}" th:errorclass="is-invalid" aria-describedby="entryLevelFitHelp">
             <div id="entryLevelFitHelp" class="form-text">e.g. Drop 0.5 EU Size / NA</div>
+            <div id="validationEntryLevelFit" class="invalid-feedback" th:errors="*{entryLevelFit}">
+                Please choose a username.
+            </div>
         </div>
         <div class="mb-3">
             <label for="footVolume" class="form-label">Foot Volume</label>
-            <input type="text" class="form-control" id="footVolume" th:field="*{footVolume}" aria-describedby="footVolumeHelp">
+            <input type="text" class="form-control" id="footVolume" th:field="*{footVolume}" th:errorclass="is-invalid" aria-describedby="footVolumeHelp">
             <div id="footVolumeHelp" class="form-text">e.g. High / Medium / Low</div>
+            <div id="validationFootVolume" class="invalid-feedback" th:errors="*{footVolume}">
+                Please choose a username.
+            </div>
         </div>
         <div class="mb-3">
             <label for="footType" class="form-label">Foot Type</label>
-            <input type="text" class="form-control" id="footType" th:field="*{footType}" aria-describedby="footTypeHelp">
+            <input type="text" class="form-control" id="footType" th:field="*{footType}" th:errorclass="is-invalid" aria-describedby="footTypeHelp">
             <div id="footTypeHelp" class="form-text">e.g. Classic / Square / Centre</div>
+            <div id="validationFootType" class="invalid-feedback" th:errors="*{footType}">
+                Please choose a username.
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

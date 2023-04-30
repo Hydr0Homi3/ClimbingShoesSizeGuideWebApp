@@ -1,9 +1,11 @@
 package kubala.jakub.ClimbingShoesSizeGuideweb.web.controller;
 
+import jakarta.validation.Valid;
 import kubala.jakub.ClimbingShoesSizeGuideweb.biz.model.Shoe;
 import kubala.jakub.ClimbingShoesSizeGuideweb.data.ShoeRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,8 +38,11 @@ public class ShoeController {
     }
 
     @PostMapping        //handles any request trying to submit data into the backend (POST)
-    public String saveShoe(Shoe shoe) {     //passing shoe object from our form and getShoe() method
-        shoeRepository.save(shoe);          //saving new shoe in a db
-        return "redirect:shoes";             //redirect: shows refreshed version of shoes after adding new instance to the db
+    public String saveShoe(@Valid Shoe shoe, Errors errors) {     //passing shoe object from our form and getShoe() method //@Valid says Spring to validate any data coming from the browser using constraints in Shoe Class // errors instance gives errors with validation
+        if (!errors.hasErrors()) {
+            shoeRepository.save(shoe);          //saving new shoe in a db
+            return "redirect:shoes";             //redirect: shows refreshed version of shoes after adding new instance to the db
+        }
+        return "shoes";
     }
 }
