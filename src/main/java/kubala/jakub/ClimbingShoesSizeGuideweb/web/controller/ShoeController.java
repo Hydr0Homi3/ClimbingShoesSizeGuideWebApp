@@ -6,10 +6,10 @@ import kubala.jakub.ClimbingShoesSizeGuideweb.data.ShoeRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller                     //marking as a Controller (similar to @Component and @Repository), telling Spring this is a class I want you to register and manage. @Controller has to do with Web stuff
 @RequestMapping("/shoes")       //any request that comes from the web with resource /shoes should be mapped to this class
@@ -44,5 +44,15 @@ public class ShoeController {
             return "redirect:shoes";             //redirect: shows refreshed version of shoes after adding new instance to the db
         }
         return "shoes";
+    }
+
+
+    @PostMapping(params = "delete=true")    //adding params delete=true to @PostMapping for Spring to handle any request containing this parameters
+    public String deleteShoes(@RequestParam Optional<List<Long>> selections) {      //@RequestParam mapping selected shoes from the table based on their id (connected to select button) //Optional gives ability for selections to be empty
+        System.out.println(selections);
+        if (selections.isPresent()) {
+            shoeRepository.deleteAllById(selections.get());
+        }
+        return "redirect:shoes";
     }
 }

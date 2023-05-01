@@ -8,37 +8,42 @@
 </head>
 <body>
 
-<div class="col-md-8 col-sm-10 mx-auto my-5">
+<div class="col-md-8 col-sm-11 mx-auto my-5">
     <h2>Climbing Shoes List</h2>
-    <table class="table table table-bordered table-sm">
-        <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Rock Shoe Model</th>
-            <th scope="col">Technical Fit</th>
-            <th scope="col">Semi-Technical Fit</th>
-            <th scope="col">Traditional Fit</th>
-            <th scope="col">Entry Level Fit</th>
-            <th scope="col">Foot Volume</th>
-            <th scope="col">Foot Type</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:if="${#lists.isEmpty(shoes)}">
-            <td colspan="8" class="text-center">No Data</td>
-        </tr>
-        <tr th:each="shoe : ${shoes}">
-            <th scope="row" th:text="${shoe.id}">1</th>
-            <td th:text="${shoe.rockShoeModel}">Mark</td>
-            <td th:text="${shoe.technicalFit}">Mark</td>
-            <td th:text="${shoe.semiTechnicalFit}">Otto</td>
-            <td th:text="${shoe.traditionalFit}">@mdo</td>
-            <td th:text="${shoe.entryLevelFit}">@mdo</td>
-            <td th:text="${shoe.footVolume}">@mdo</td>
-            <td th:text="${shoe.footType}">@mdo</td>
-        </tr>
-        </tbody>
-    </table>
+    <form method="post">
+        <table class="table table table-bordered table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Select</th>
+                <th scope="col">ID</th>
+                <th scope="col">Rock Shoe Model</th>
+                <th scope="col">Technical Fit</th>
+                <th scope="col">Semi-Technical Fit</th>
+                <th scope="col">Traditional Fit</th>
+                <th scope="col">Entry Level Fit</th>
+                <th scope="col">Foot Volume</th>
+                <th scope="col">Foot Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${#lists.isEmpty(shoes)}">
+                <td colspan="8" class="text-center">No Data</td>
+            </tr>
+            <tr th:each="shoe : ${shoes}">
+                <td><input class="form-check-input" type="checkbox" name="selections" th:value="${shoe.id}" /></td>
+                <th scope="row" th:text="${shoe.id}">1</th>
+                <td th:text="${shoe.rockShoeModel}">Mark</td>
+                <td th:text="${shoe.technicalFit}">Mark</td>
+                <td th:text="${shoe.semiTechnicalFit}">Otto</td>
+                <td th:text="${shoe.traditionalFit}">@mdo</td>
+                <td th:text="${shoe.entryLevelFit}">@mdo</td>
+                <td th:text="${shoe.footVolume}">@mdo</td>
+                <td th:text="${shoe.footType}">@mdo</td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" name="delete" value="true" class="btn btn-danger mb-5">Delete</button>
+    </form>
 
     <h2>Climbing Shoe Form</h2>
     <form th:object="${shoe}" method="post">
