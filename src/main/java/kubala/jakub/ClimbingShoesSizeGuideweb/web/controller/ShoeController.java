@@ -55,4 +55,14 @@ public class ShoeController {
         }
         return "redirect:shoes";
     }
+
+    @PostMapping(params = "edit=true")    //adding params edit=true to @PostMapping for Spring to handle any request containing this parameters
+    public String editShoe(@RequestParam Optional<List<Long>> selections, Model model) {      //@RequestParam mapping selected shoes from the table based on their id (connected to select button) //Optional gives ability for selections to be empty // add model, so Spring will pass the model
+        System.out.println(selections);
+        if (selections.isPresent()) {
+            Optional<Shoe> shoe = shoeRepository.findById(selections.get().get(0));//if somebody checks more than 1 checkbox to edit, I want to retrieve just the first element and assign it to the shoe object
+            model.addAttribute("shoe", shoe);       //retrieved data is passed back to the creation form and after submitting it updates the record
+        }
+        return "shoes";  //no redirect as I want to get back to the page with the model intact, and with redirect it will get lost
+    }
 }
