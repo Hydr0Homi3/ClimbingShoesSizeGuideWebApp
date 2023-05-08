@@ -3,7 +3,6 @@ package kubala.jakub.ClimbingShoesSizeGuideweb.data;
 import kubala.jakub.ClimbingShoesSizeGuideweb.biz.model.Shoe;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
